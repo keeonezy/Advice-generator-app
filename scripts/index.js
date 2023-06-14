@@ -8,7 +8,7 @@ async function getAdviceRandom() {
     const data = await res.json();
 
     counterAdvice.textContent = data.slip.id
-    // subTitle.textContent = `"${data.slip.advice}"`;
+    subTitle.textContent = `"${data.slip.advice}"`;
 }
 getAdviceRandom();
 
