@@ -46,6 +46,21 @@ async function getAdviceId(evt) {
     subTitle.textContent = `"${data.slip.advice}"`;
 }
 
+inputSearch.value = "5";
+
 searchButton.addEventListener("click", getAdviceId);
 
-inputSearch.value = "5";
+
+// Создаем локальное хранилище с данными
+function setLocalStorage() {
+    localStorage.setItem("adviceCounter", inputSearch.value);
+}
+window.addEventListener("beforeunload", setLocalStorage);
+
+// Получаем из локального хранилища данные
+function getLocalStorage() {
+    if (localStorage.getItem("adviceCounter")) {
+        inputSearch.value = localStorage.getItem("adviceCounter");
+    }
+}
+window.addEventListener("load", getLocalStorage);
