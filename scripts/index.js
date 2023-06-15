@@ -15,12 +15,15 @@ getAdviceRandom();
 function timeRandomButton() {
     getAdviceRandom();
     randomButton.disabled = true;
-    randomButton.style.display = "none";
+    randomButton.style.opacity = "0";
 
     setTimeout(() => {
         randomButton.disabled = false;
-        randomButton.style.display = "block";
+        randomButton.style.opacity = "1";
     }, 2000);
 }
 
 randomButton.addEventListener("click", timeRandomButton);
+
+// Advice:
+// js style name: https://www.w3schools.com/jsref/prop_style_transition.asp
