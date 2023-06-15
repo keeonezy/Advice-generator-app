@@ -91,6 +91,8 @@ async function getAdviceString(evt) {
         counterAdvice.textContent = element.id;
         subTitle.textContent = `"${element.advice}"`;
     })
+
+    inputSearchString.value = "";
 }
 
 searchButtonString.addEventListener("click", getAdviceString);
