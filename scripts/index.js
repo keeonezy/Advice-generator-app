@@ -12,4 +12,15 @@ async function getAdviceRandom() {
 }
 getAdviceRandom();
 
-randomButton.addEventListener("click", getAdviceRandom);
+function timeRandomButton() {
+    getAdviceRandom();
+    randomButton.disabled = true;
+    randomButton.style.display = "none";
+
+    setTimeout(() => {
+        randomButton.disabled = false;
+        randomButton.style.display = "block";
+    }, 2000);
+}
+
+randomButton.addEventListener("click", timeRandomButton);

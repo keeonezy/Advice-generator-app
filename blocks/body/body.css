@@ -63,7 +63,13 @@
     height: 60px;
     position: absolute;
     bottom: -8%;
-    left: 45%;
+    left: 50%;
     cursor: pointer;
     border: transparent;
+    transform: translateX(-50%);
+    transition: 0.5s all;
+}
+
+.advice__random:hover {
+    background-color: var(--GrayishBlue);
 }
