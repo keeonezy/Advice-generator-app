@@ -15,7 +15,7 @@ async function getAdviceRandom() {
     counterAdvice.textContent = data.slip.id
     subTitle.textContent = `"${data.slip.advice}"`;
 }
-getAdviceRandom();
+// getAdviceRandom();
 
 function timeRandomButton() {
     getAdviceRandom();
@@ -36,13 +36,24 @@ randomButton.addEventListener("click", timeRandomButton);
 const inputSearch = document.querySelector(".advice__input");
 const searchButton = document.querySelector(".advice__button");
 
+async function getAdviceFirstId() {
+    ;
+    const url = `https://api.adviceslip.com/advice/${inputSearch.value}`;
+    const res = await fetch(url);
+    const data = await res.json();
+
+    counterAdvice.textContent = data.slip.id;
+    subTitle.textContent = `"${data.slip.advice}"`;
+}
+getAdviceFirstId();
+
 async function getAdviceId(evt) {
     evt.preventDefault();
     const url = `https://api.adviceslip.com/advice/${inputSearch.value}`;
     const res = await fetch(url);
     const data = await res.json();
 
-    counterAdvice.textContent = data.slip.id
+    counterAdvice.textContent = data.slip.id;
     subTitle.textContent = `"${data.slip.advice}"`;
 }
 
@@ -64,3 +75,22 @@ function getLocalStorage() {
     }
 }
 window.addEventListener("load", getLocalStorage);
+
+
+// 3. Поиск через input по string
+const inputSearchString = document.querySelector(".advice__input-string");
+const searchButtonString = document.querySelector(".advice__button-string");
+
+async function getAdviceString(evt) {
+    evt.preventDefault();
+    const url = `https://api.adviceslip.com/advice/search/${inputSearchString.value}`;
+    const res = await fetch(url);
+    const data = await res.json();
+
+    data.slips.forEach(element => {
+        counterAdvice.textContent = element.id;
+        subTitle.textContent = `"${element.advice}"`;
+    })
+}
+
+searchButtonString.addEventListener("click", getAdviceString);
