@@ -50,6 +50,7 @@
 
 .advice__img {
     margin: 0 auto;
+    margin-bottom: 30px;
     display: block;
 }
 
@@ -72,4 +73,22 @@
 
 .advice__random:hover {
     background-color: var(--GrayishBlue);
+}
+
+.advice__form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 50px;
+}
+
+.advice__input {
+    max-width: 200px;
+}
+
+.advice__button {
+    background-color: var(--LightCyan);
+    border: transparent;
+    width: 200px;
+    cursor: pointer;
 }

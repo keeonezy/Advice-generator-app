@@ -1,3 +1,8 @@
+// Advice:
+// 1. js style name: https://www.w3schools.com/jsref/prop_style_transition.asp
+// 2. Api info https://api.adviceslip.com/
+
+// 1. Рандом цитата через кнопку
 const counterAdvice = document.querySelector(".advice__counter");
 const subTitle = document.querySelector(".advice__subtitle");
 const randomButton = document.querySelector(".advice__random");
@@ -25,5 +30,22 @@ function timeRandomButton() {
 
 randomButton.addEventListener("click", timeRandomButton);
 
-// Advice:
-// js style name: https://www.w3schools.com/jsref/prop_style_transition.asp
+
+
+// 2. Поиск через input по id
+const inputSearch = document.querySelector(".advice__input");
+const searchButton = document.querySelector(".advice__button");
+
+async function getAdviceId(evt) {
+    evt.preventDefault();
+    const url = `https://api.adviceslip.com/advice/${inputSearch.value}`;
+    const res = await fetch(url);
+    const data = await res.json();
+
+    counterAdvice.textContent = data.slip.id
+    subTitle.textContent = `"${data.slip.advice}"`;
+}
+
+searchButton.addEventListener("click", getAdviceId);
+
+inputSearch.value = "5";
